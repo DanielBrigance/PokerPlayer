@@ -12,9 +12,15 @@ namespace Poker
         private int r1, r2; //random numbers used in shuffling
         private Random rand = new Random();
 
+        public DeckOfCards()
+        {
+            populateDeck();
+            shuffleDeck();
+        }
+
 
         //This method builds a deck of cards numbered 1 to 52
-        public void populateDeck()
+        private void populateDeck()
         {
             for (int i = 1; i <= 52; i++)
             {
@@ -25,7 +31,7 @@ namespace Poker
         //This methd shuffles the deck 4 times by generating two non-equal integers
         //between 0 and 51 and then swapping the cards at those positions within
         //the deck.  It does this 208 times (52 * 4).
-        public void shuffleDeck()
+        private void shuffleDeck()
         {
             int temp;
             for (int i = 0; i <= 208; i++) //shuffles 4 times

@@ -9,21 +9,33 @@ namespace Poker
     class Player
     {
         private String playerName; //Name of the player
-        private bool livePlayer; //human or AI player
+        private int lowCard, highCard;
 
         //Constructor for live player
-        public Player(String playerName)
+        public Player() { }
+
+        public void setPlayerName(String name)
         {
-            this.playerName = playerName;
-            livePlayer = true;
-            //Need to open the file associated with the player
+            playerName = name;
         }
 
-        //Constructor for AI player
-        public Player()
+        public void setHand(int card1, int card2)
         {
-            playerName = "Danner";
-            livePlayer = false;
+            int card1Mod14 = card1 % 14;
+            int card2Mod14 = card2 % 14;
+            if (card1Mod14 > card2Mod14)
+            {
+                if (card2Mod14 != 1) // Card2 not an Ace
+                {
+                    highCard = card2;
+                    lowCard = card1;
+                }
+            }
+            else
+            {
+                highCard = card1;
+                lowCard = card2;
+            }
         }
     }
 }
